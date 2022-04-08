@@ -22,8 +22,14 @@ jobs:
       with:
         name: ooo.exe
         path: target/release/ooo.exe
+    - uses: actions/download-artifact@v3
+      with:
+        name: ooo.exe
+        path: releases/
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: 'nightly'
-        files: ooo.exe
+        files: |
+          releases/*
+    
